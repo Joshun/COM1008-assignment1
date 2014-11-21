@@ -1,0 +1,20 @@
+p.biography {
+	padding: 5px 100px;
+	margin-left: 40px;
+}
+
+p.biography-clear {
+	padding: 5px 100px;
+	margin-left: 40px;
+	clear: both;
+}
+
+img.profile {
+	border: 1px solid grey;
+	padding: 10px;
+}
+
+figure.profile {
+	float: left;
+	min-height: 100px;
+}

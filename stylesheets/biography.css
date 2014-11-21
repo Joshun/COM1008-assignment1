@@ -1,0 +1,14 @@
+p.biography {
+	padding: 5px 100px;
+	margin-left: 150px;
+}
+
+img.profile {
+	border: 1px solid grey;
+	padding: 10px;
+}
+
+figure.profile {
+	float: left;
+	width: 150px;
+}

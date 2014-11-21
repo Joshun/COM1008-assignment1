@@ -1,0 +1,115 @@
+/* Wrapper and subwrapper
+ * (needed for sidebar to function correctly) ~~~~~~~~~~~~~ */
+
+
+/*
+#wrapper {
+	width: 75%;
+	margin: auto;
+	
+	background-image: -moz-linear-gradient(
+		left, 
+		#9999FF, 
+		#9999FF 152px,
+		#66FF33,
+		#66FF33 152px);
+}
+*/
+
+body {
+	background-color: #9999FF;
+}
+
+#wrapper {
+	background-color: #9999FF;
+	width: 75%;
+	margin: auto;
+}
+
+#subwrapper {
+	margin-left: 152px; /* margin = nav_border_left(1) + nav_border_right(1) + nav_width(150) */
+	background-color: ##5FFF5F;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+
+/* Navigation sidebar ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+nav {
+	float: left;
+	width: 150px;
+	border: 1px solid;
+}
+
+nav ul {
+	padding: 0;
+	list-style: none;
+	margin: 0;
+}
+
+nav ul li {
+	padding: 10px 5px;
+	background-color: #66FF99;
+	transition: ease 1s;
+}
+
+nav ul li+li {
+	border-top: 1px solid;
+}
+
+nav ul li#current-page { /* Make current page's button different */
+	background-color: #00FFCC;
+	font-weight: bold;
+}
+
+nav ul li:hover {
+	background-color: #00FFCC;
+	transition: ease 1s;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+
+/* Heading definitions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+h1 {
+	padding: 10px;
+	font-family: Comic Sans MS, serif;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+
+/* Paragraph definitions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+p.info {
+	padding: 10px;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+
+
+/* Image definitions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+img.logo {
+	float: right
+}
+
+img.graphics {
+	float: right;
+	margin-right: 200px;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+header {
+	background-image: url("../images/header_gradient.png");
+	background-repeat: repeat-x;
+	height: 25px;
+}
+
+footer {
+	font-size: 0.75em;
+}
