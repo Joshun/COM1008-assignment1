@@ -2,39 +2,36 @@
  * (needed for sidebar to function correctly) ~~~~~~~~~~~~~ */
 
 
-/*
+
 #wrapper {
 	width: 75%;
 	margin: auto;
 	
 	background-image: -moz-linear-gradient(
 		left, 
-		#9999FF, 
-		#9999FF 152px,
-		#66FF33,
-		#66FF33 152px);
+		#F3F2EA, 
+		#F3F2EA 150px,
+		#D1E9FF,
+		#D1E9FF 150px);
 }
-*/
+
 
 body {
-	background-color: #9999FF;
+	background-color: #99F;
 }
 
-#wrapper {
-	background-color: #9999FF;
+/* #wrapper {
+	background-color: #F3F2EA;
 	width: 75%;
 	margin: auto;
-}
-
-#subwrapper {
-	margin-left: 152px; /* margin = nav_border_left(1) + nav_border_right(1) + nav_width(150) */
-	background-color: #5FFF5F;
-}
+} */
 
 /* Default indentation for all main content elements (everything other than navbar, header and footer) */
 
+
 #main-content {
-	margin-left: 50px;
+	margin-left: 200px;
+	background-color: #D1E9FF;
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -44,7 +41,8 @@ body {
 nav {
 	float: left;
 	width: 150px;
-	border: 1px solid grey;
+	/* border: 1px solid grey; */
+
 }
 
 nav ul {
@@ -55,7 +53,7 @@ nav ul {
 
 nav ul li a {
 	padding: 10px 5px;
-	background-color: #66FF99;
+	background-color: #F3F2EA;
 	display: block;
 	transition: ease 1s;
 	text-decoration: none;
@@ -63,6 +61,7 @@ nav ul li a {
 }
 
 nav ul li a:clicked {
+	color: #4E1A8C;
 }
 
 /*
@@ -72,12 +71,12 @@ nav ul li+li {
 */
 
 nav ul li#current-page a { /* Make current page's button different */
-	background-color: #00FFCC;
+	background-color: #FFA3B6;
 	font-weight: bold;
 }
 
 nav ul li a:hover {
-	background-color: #00FFCC;
+	background-color: #FFA3B6;
 	transition: ease 1s;
 }
 
@@ -88,7 +87,6 @@ nav ul li a:hover {
 /* Heading definitions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 h1 {
-	padding: 10px;
 	font-family: Comic Sans MS, serif;
 }
 
@@ -116,16 +114,20 @@ img.graphics {
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
+
 header {
 	background-image: url("../images/header_gradient.png");
 	background-repeat: repeat-x;
-	height: 25px;
+	height: 50px;
+	padding-left: 200px;
+
 }
 
 footer {
 	margin-top: 25%;
 	padding-top: 10px;
 	padding-bottom: 5px;
-	background-color: #99FF33;
+	padding-left: 10px;
+	background-color: #A3E1FF;
 	font-size: 0.75em;
 }
