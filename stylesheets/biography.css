@@ -10,5 +10,5 @@ img.profile {
 
 figure.profile {
 	float: left;
-	width: 150px;
+	width: 150px; /* Same as paragraph left margin */
 }
