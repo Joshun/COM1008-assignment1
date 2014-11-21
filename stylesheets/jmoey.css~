@@ -28,18 +28,23 @@ body {
 
 #subwrapper {
 	margin-left: 152px; /* margin = nav_border_left(1) + nav_border_right(1) + nav_width(150) */
-	background-color: ##5FFF5F;
+	background-color: #5FFF5F;
+}
+
+/* Default indentation for all main content elements (everything other than navbar, header and footer) */
+
+#main-content {
+	margin-left: 50px;
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-
 
 /* Navigation sidebar ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 nav {
 	float: left;
 	width: 150px;
-	border: 1px solid;
+	border: 1px solid grey;
 }
 
 nav ul {
@@ -48,25 +53,34 @@ nav ul {
 	margin: 0;
 }
 
-nav ul li {
+nav ul li a {
 	padding: 10px 5px;
 	background-color: #66FF99;
+	display: block;
 	transition: ease 1s;
+	text-decoration: none;
+	color: #4E1A8C;
 }
 
+nav ul li a:clicked {
+}
+
+/*
 nav ul li+li {
 	border-top: 1px solid;
 }
+*/
 
-nav ul li#current-page { /* Make current page's button different */
+nav ul li#current-page a { /* Make current page's button different */
 	background-color: #00FFCC;
 	font-weight: bold;
 }
 
-nav ul li:hover {
+nav ul li a:hover {
 	background-color: #00FFCC;
 	transition: ease 1s;
 }
+
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
@@ -83,9 +97,7 @@ h1 {
 
 /* Paragraph definitions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
-p.info {
-	padding: 10px;
-}
+
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
@@ -111,5 +123,9 @@ header {
 }
 
 footer {
+	margin-top: 25%;
+	padding-top: 10px;
+	padding-bottom: 5px;
+	background-color: #99FF33;
 	font-size: 0.75em;
 }

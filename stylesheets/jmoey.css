@@ -44,7 +44,7 @@ body {
 nav {
 	float: left;
 	width: 150px;
-	border: 1px solid;
+	border: 1px solid grey;
 }
 
 nav ul {
@@ -58,11 +58,19 @@ nav ul li a {
 	background-color: #66FF99;
 	display: block;
 	transition: ease 1s;
+	text-decoration: none;
+	color: #4E1A8C;
 }
 
+nav ul li a:clicked {
+	color: #4E1A8C;
+}
+
+/*
 nav ul li+li {
 	border-top: 1px solid;
 }
+*/
 
 nav ul li#current-page a { /* Make current page's button different */
 	background-color: #00FFCC;
@@ -73,6 +81,7 @@ nav ul li a:hover {
 	background-color: #00FFCC;
 	transition: ease 1s;
 }
+
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
