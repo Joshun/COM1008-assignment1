@@ -14,6 +14,18 @@
 		#F3F2EA 150px,
 		#D1E9FF,
 		#D1E9FF 150px);
+	background-image: -webkit-linear-gradient(
+		left, 
+		#F3F2EA, 
+		#F3F2EA 150px,
+		#D1E9FF,
+		#D1E9FF 150px);
+	background-image: linear-gradient(
+		left, 
+		#F3F2EA, 
+		#F3F2EA 150px,
+		#D1E9FF,
+		#D1E9FF 150px);
 }
 
 
@@ -56,7 +68,7 @@ nav ul li a {
 	padding: 10px 5px;
 	background-color: #F3F2EA;
 	display: block;
-	transition: ease 1s;
+	transition: background-color ease 1s;
 	text-decoration: none;
 	color: #4E1A8C;
 }
@@ -78,7 +90,6 @@ nav ul li#current-page a { /* Make current page's button different */
 
 nav ul li a:hover {
 	background-color: #FFA3B6;
-	transition: ease 1s;
 }
 
 
@@ -110,7 +121,7 @@ img.logo {
 
 img.graphics {
 	float: right;
-	margin-right: 200px;
+	/*margin-right: 0.5em;*/
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -127,9 +138,7 @@ header {
 
 footer {
 	margin-top: 25%;
-	padding-top: 10px;
-	padding-bottom: 5px;
-	padding-left: 10px;
+	padding: 10px 0 5px 10px; /* top: 10px, right: 0, bottom: 5px, left: 10px */
 	background-color: #A3E1FF;
 	font-size: 0.75em;
 }

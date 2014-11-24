@@ -1,3 +1,7 @@
 h3 {
-	text-shadow: 2px 2px #333399;
+	text-shadow: 2px 2px #9999FF;
+}
+
+.news-content p {
+	padding-bottom: 10px;
 }
