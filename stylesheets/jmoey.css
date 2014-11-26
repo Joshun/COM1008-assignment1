@@ -1,5 +1,5 @@
-/* Wrapper and subwrapper
- * (needed for sidebar to function correctly) ~~~~~~~~~~~~~ */
+/* Wrapper, body and main-content wrapper
+ * (needed for sidebar and page background to function correctly) ~~~~~~~~~~~~~ */
 
 
 
@@ -7,7 +7,7 @@
 	width: 75%;
 	margin: auto;
 	
-	background-color: #D1E9FF;
+	background-color: #D1E9FF; /* Fallback background colour if gradient is unsupported */
 	background-image: -moz-linear-gradient(
 		left, 
 		#F3F2EA, 
@@ -33,19 +33,11 @@ body {
 	background-color: #99F;
 }
 
-/* #wrapper {
-	background-color: #F3F2EA;
-	width: 75%;
-	margin: auto;
-} */
-
 /* Default indentation for all main content elements (everything other than navbar, header and footer) */
-
-
 #main-content {
 	margin-left: 200px; /* Navbar is 150px - indent 50px from navbar */
 	margin-right: 50px; /* Indent 50px to right of page */
-	background-color: #D1E9FF;
+	background-color: #D1E9FF; /* Fallback background colour if gradient fails */
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -99,8 +91,13 @@ nav ul li a:hover {
 
 /* Heading definitions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
-h1 {
+h1.company-title {
+	font-size: 2.5em;
 	font-family: Comic Sans MS, serif;
+}
+
+h1 {
+	font-size: 2em;
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
