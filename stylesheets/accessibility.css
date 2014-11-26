@@ -1,0 +1,12 @@
+.access-keys {
+	list-style: none;
+}
+
+.access-key-element {
+	font-weight: bold;
+	font-size: 1.2em;
+}
+
+ul.access-keys li {
+	padding: 5px 0 5px 0;
+}

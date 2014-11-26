@@ -3,6 +3,10 @@ p.biography {
 	margin-left: 150px;
 }
 
+p.disclaimer {
+	font-size: 0.75em;
+}
+
 img.profile {
 	border: 1px solid grey;
 	padding: 10px;

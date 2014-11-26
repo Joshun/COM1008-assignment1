@@ -43,7 +43,8 @@ body {
 
 
 #main-content {
-	margin-left: 200px;
+	margin-left: 200px; /* Navbar is 150px - indent 50px from navbar */
+	margin-right: 50px; /* Indent 50px to right of page */
 	background-color: #D1E9FF;
 }
 
