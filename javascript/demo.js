@@ -10,13 +10,15 @@ var context;
 
 var leftDown, rightDown;
 var playerPaddle;
+var ball;
 
 /* Ball object definition ============================================*/
 function Ball(x, y, r, speed, style) {
 	this.x = x;
 	this.y = y;
 	this.r = r;
-	this.speed = speed;
+	this.dx = speed;
+	this.dy = speed;
 	this.style = style;
 }
 
@@ -27,6 +29,31 @@ Ball.prototype.draw = function() {
 	context.closePath();
 	context.fill();
 }
+
+Ball.prototype.centre = function() {
+	this.x = SCREEN_WIDTH / 2;
+	this.y = SCREEN_HEIGHT / 2;
+}
+
+Ball.prototype.update = function() {
+	if( (this.x - this.r) < 0 || (this.x + this.r) > SCREEN_WIDTH ) {
+		this.dx = -this.dx;
+	}
+	if( (this.y - this.r) < 0 ) {
+		this.dy = -this.dy;
+	}
+	else if( (this.y + this.r) > SCREEN_HEIGHT ) {
+		this.centre();
+	}
+	
+	if( playerPaddle.checkBallIntersect(ball) ) {
+		this.dy = -this.dy;
+	}
+	
+	this.x += this.dx;
+	this.y += this.dy;
+}
+
 /*====================================================================*/
 
 /* Paddle object definition ==========================================*/
@@ -61,16 +88,23 @@ Paddle.prototype.moveRight = function() {
 		this.x += this.speed;
 }
 
+Paddle.prototype.checkBallIntersect = function(ball) {
+	if( ((ball.x - ball.r) > this.x) && ((ball.x + ball.r) < (this.x + this.width)) && ((ball.y + ball.r) >= this.y) )
+		return true;
+	else
+		return false;
+}
+
 Paddle.prototype.update = function() {
 	if( leftDown ) {
-		console.log("Left pressed")
+		//console.log("Left pressed")
 		this.moveLeft();
-		console.log(this.x);
+		//console.log(this.x);
 	}
 	else if( rightDown ) {
-		console.log("Right pressed")
+		//console.log("Right pressed")
 		this.moveRight();
-		console.log(this.x);
+		//console.log(this.x);
 	}
 }
 /*====================================================================*/
@@ -100,6 +134,7 @@ function clear() {
 
 function render() {
 	playerPaddle.update();
+	ball.update();
 	
 	clear();
 	playerPaddle.draw();
