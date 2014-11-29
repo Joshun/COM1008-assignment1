@@ -4,6 +4,7 @@
 
 var SCREEN_WIDTH = 500;
 var SCREEN_HEIGHT = 500;
+var BLOCK_SIZE = 50;
 var FPS = 30;
 
 var context;
@@ -11,6 +12,7 @@ var context;
 var leftDown, rightDown;
 var playerPaddle;
 var ball;
+var blocks;
 
 /* Ball object definition ============================================*/
 function Ball(x, y, r, speed, style) {
@@ -109,6 +111,51 @@ Paddle.prototype.update = function() {
 }
 /*====================================================================*/
 
+/* Block object definition ===========================================*/
+function Block(x, y, width, height, style) {
+	this.x = x;
+	this.y = y;
+	this.width = width;
+	this.height = height;
+	this.style = style;
+}
+
+Block.prototype.draw = function() {
+	context.strokeStyle = this.style;
+	context.beginPath();
+	context.rect(this.x, this.y, this.width, this.height);
+	context.closePath();
+	context.stroke();
+}
+/*====================================================================*/
+
+/* Block list object definition ======================================*/
+function BlockList(freeRows) {
+	this.rows = ( SCREEN_HEIGHT - freeRows ) / BLOCK_SIZE;
+	this.columns = SCREEN_WIDTH / BLOCK_SIZE;
+	this.blocks = new Array(this.rows);
+	for(var i=0; i<this.rows; i++) {
+		this.blocks[i] = new Array(this.columns);
+	}
+}
+
+BlockList.prototype.addBlocks = function(style) {
+	for(var row=0; row<this.rows; row++) {
+		for( var column=0; column<this.columns; column++ ) {
+			this.blocks[row][column] = new Block(column*BLOCK_SIZE, row*BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE, style);
+		}
+	}
+}
+
+BlockList.prototype.drawBlocks = function() {
+	for( var row=0; row<this.rows; row++ ) {
+		for( var column=0; column<this.columns; column++ )
+			this.blocks[row][column].draw();
+	}
+}
+
+/*====================================================================*/
+
 function onKeyDown(evt) {
  	if( evt.keyCode == 39 ) rightDown = true;
  	else if( evt.keyCode == 37 ) leftDown = true;
@@ -139,6 +186,7 @@ function render() {
 	clear();
 	playerPaddle.draw();
 	ball.draw();
+	blocks.drawBlocks();
 }
 
 function init() {
@@ -149,6 +197,9 @@ function init() {
 	playerPaddle.draw();
 	
 	ball = new Ball(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 8, 4, "rgb(0, 0, 0)");
+	
+	blocks = new BlockList(200);
+	blocks.addBlocks("rgb(0, 0, 0)");
 
 	intervalID = setInterval(render, FPS);		
 }	
