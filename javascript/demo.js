@@ -112,20 +112,23 @@ Paddle.prototype.update = function() {
 /*====================================================================*/
 
 /* Block object definition ===========================================*/
-function Block(x, y, width, height, style) {
+function Block(x, y, width, height, sstyle, fstyle) {
 	this.x = x;
 	this.y = y;
 	this.width = width;
 	this.height = height;
-	this.style = style;
+	this.sstyle = sstyle;
+	this.fstyle = fstyle;
 }
 
 Block.prototype.draw = function() {
-	context.strokeStyle = this.style;
+	context.strokeStyle = this.sstyle;
+	context.fillStyle = this.fstyle;
 	context.beginPath();
 	context.rect(this.x, this.y, this.width, this.height);
 	context.closePath();
 	context.stroke();
+	context.fill();
 }
 /*====================================================================*/
 
@@ -140,9 +143,23 @@ function BlockList(freeRows) {
 }
 
 BlockList.prototype.addBlocks = function(style) {
+	var fstyle;
 	for(var row=0; row<this.rows; row++) {
 		for( var column=0; column<this.columns; column++ ) {
-			this.blocks[row][column] = new Block(column*BLOCK_SIZE, row*BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE, style);
+			if( row % 2 == 0 ) {
+				if( column % 2  == 0 )
+					fstyle = "rgb(0,0,0)";
+				else
+					fstyle = "rgb(255,255,255)";
+			}
+			else {
+				if( column % 2  == 0 )
+					fstyle = "rgb(255,255,255)";
+				else
+					fstyle = "rgb(0,0,0)";
+			}
+				
+			this.blocks[row][column] = new Block(column*BLOCK_SIZE, row*BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE, style, fstyle);
 		}
 	}
 }
@@ -185,8 +202,9 @@ function render() {
 	
 	clear();
 	playerPaddle.draw();
-	ball.draw();
 	blocks.drawBlocks();
+
+	ball.draw();
 }
 
 function init() {
