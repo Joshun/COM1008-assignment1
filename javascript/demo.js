@@ -215,6 +215,10 @@ function render() {
 		playerPaddle.update();
 		ball.update();
 	}
+	else {
+		clear();
+		return;
+	}
 	
 	clear();
 	playerPaddle.draw();
