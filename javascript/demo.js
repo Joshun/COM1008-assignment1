@@ -7,12 +7,16 @@ var SCREEN_HEIGHT = 500;
 var BLOCK_SIZE = 50;
 var FPS = 30;
 
+var NUM_LIVES = 3;
+
 var context;
 
 var leftDown, rightDown;
 var playerPaddle;
 var ball;
 var blocks;
+
+var gameover;
 
 /* Ball object definition ============================================*/
 function Ball(x, y, r, speed, style) {
@@ -22,6 +26,7 @@ function Ball(x, y, r, speed, style) {
 	this.dx = speed;
 	this.dy = speed;
 	this.style = style;
+	this.livesLeft = NUM_LIVES;
 }
 
 Ball.prototype.draw = function() {
@@ -37,6 +42,15 @@ Ball.prototype.centre = function() {
 	this.y = SCREEN_HEIGHT / 2;
 }
 
+Ball.prototype.dead = function() {
+	this.livesLeft--;
+	this.centre();
+	if( this.livesLeft > 0 )
+		this.r -= 2;
+	else
+		gameover = true;
+}
+
 Ball.prototype.update = function() {
 	if( (this.x - this.r) < 0 || (this.x + this.r) > SCREEN_WIDTH ) {
 		this.dx = -this.dx;
@@ -45,7 +59,7 @@ Ball.prototype.update = function() {
 		this.dy = -this.dy;
 	}
 	else if( (this.y + this.r) > SCREEN_HEIGHT ) {
-		this.centre();
+		this.dead();
 	}
 	
 	if( playerPaddle.checkBallIntersect(ball) ) {
@@ -197,8 +211,10 @@ function clear() {
 }
 
 function render() {
-	playerPaddle.update();
-	ball.update();
+	if( ! gameover ) {
+		playerPaddle.update();
+		ball.update();
+	}
 	
 	clear();
 	playerPaddle.draw();
@@ -209,6 +225,7 @@ function render() {
 
 function init() {
 	context = $("#demo-canvas")[0].getContext("2d");
+	gameover = false;
 
 	playerPaddle = new Paddle(100, 25, 8, "rgb(0, 0, 0)");
 	playerPaddle.centre();
