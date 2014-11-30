@@ -45,8 +45,10 @@ Ball.prototype.centre = function() {
 Ball.prototype.dead = function() {
 	this.livesLeft--;
 	this.centre();
-	if( this.livesLeft > 0 )
-		this.r -= 2;
+	if( this.livesLeft > 0 ) {
+		playerPaddle.width /= 2;
+		playerPaddle.centre();
+	}
 	else
 		gameover = true;
 }
@@ -187,6 +189,12 @@ BlockList.prototype.drawBlocks = function() {
 
 /*====================================================================*/
 
+function gameOver(style, font) {
+	context.fillStyle = style;
+	context.font = font;
+	context.fillText("Game Over!", SCREEN_WIDTH/8, SCREEN_HEIGHT/2);
+}
+
 function onKeyDown(evt) {
  	if( evt.keyCode == 39 ) rightDown = true;
  	else if( evt.keyCode == 37 ) leftDown = true;
@@ -217,6 +225,7 @@ function render() {
 	}
 	else {
 		clear();
+		gameOver("rgb(0,0,0)", "bold 64px Arial");
 		return;
 	}
 	
