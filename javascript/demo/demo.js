@@ -146,6 +146,13 @@ Block.prototype.draw = function() {
 	context.stroke();
 	context.fill();
 }
+
+Block.prototype.checkBallIntersect = function(ball) {
+	if( ((ball.x - ball.r) > this.x) && ((ball.x + ball.r) < (this.x + this.width)) && ((ball.y - r) < this.y) )
+		return true;
+	else
+		return false;
+}
 /*====================================================================*/
 
 /* Block list object definition ======================================*/
