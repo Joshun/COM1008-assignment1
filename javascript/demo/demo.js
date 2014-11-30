@@ -16,6 +16,8 @@ var playerPaddle;
 var ball;
 var blocks;
 
+var testBlock;
+
 var gameover;
 
 /* Ball object definition ============================================*/
@@ -148,8 +150,14 @@ Block.prototype.draw = function() {
 }
 
 Block.prototype.checkBallIntersect = function(ball) {
-	if( ((ball.x - ball.r) > this.x) && ((ball.x + ball.r) < (this.x + this.width)) && ((ball.y - r) < this.y) )
-		return true;
+	if( ((ball.x - ball.r) > this.x) && ((ball.x + ball.r) < (this.x + this.width)) ) {
+		/* Bottom edge of block */
+		if( ((ball.y - ball.r) < (this.y + this.height)) && ((ball.y - ball.r) > this.y) )
+			return true;
+		/* Top edge of block */
+		if( ((ball.y + ball.r) > this.y) && ((ball.y + this.r) < (this.y + this.height)) )
+			return true;
+	}
 	else
 		return false;
 }
@@ -209,11 +217,11 @@ function onKeyDown(evt) {
 
 function onKeyUp(evt) {
 	if( evt.keyCode == 39 ) {
-		console.log("right arrow key released")
+		//console.log("right arrow key released")
 		rightDown = false;
 	}
 	else if( evt.keyCode == 37 ) {
-		console.log("left arrow key released")
+		//console.log("left arrow key released")
 		leftDown = false;
 	}
 }
@@ -229,6 +237,8 @@ function render() {
 	if( ! gameover ) {
 		playerPaddle.update();
 		ball.update();
+		if( testBlock.checkBallIntersect(ball) )
+			console.log("COLLISION!");
 	}
 	else {
 		clear();
@@ -238,7 +248,8 @@ function render() {
 	
 	clear();
 	playerPaddle.draw();
-	blocks.drawBlocks();
+	//blocks.drawBlocks();
+	testBlock.draw();
 
 	ball.draw();
 }
@@ -255,6 +266,8 @@ function init() {
 	
 	blocks = new BlockList(200);
 	blocks.addBlocks("rgb(0, 0, 0)");
+	
+	testBlock = new Block(250, 250, 100, 100, "black", "white");
 
 	intervalID = setInterval(render, FPS);		
 }	
