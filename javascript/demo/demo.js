@@ -18,6 +18,7 @@ var blocks;
 
 var testBlock;
 
+var gameStarted;
 var gameover;
 
 /* Ball object definition ============================================*/
@@ -210,7 +211,14 @@ function gameOver(style, font) {
 	context.fillText("Game Over!", SCREEN_WIDTH/8, SCREEN_HEIGHT/2);
 }
 
+function gameMenu(style, font) {
+	context.fillStyle = style;
+	context.font = font;
+	context.fillText("Press any key to start...", SCREEN_WIDTH/8, SCREEN_HEIGHT/2);
+}
+
 function onKeyDown(evt) {
+	if( ! gameStarted) gameStarted = true;
  	if( evt.keyCode == 39 ) rightDown = true;
  	else if( evt.keyCode == 37 ) leftDown = true;
 }
@@ -234,7 +242,12 @@ function clear() {
 }
 
 function render() {
-	if( ! gameover ) {
+	if( ! gameStarted ) {
+		clear();
+		gameMenu("rgb(0,0,0)", "bold 32px Arial");
+		return;
+	}
+	else if( ! gameover ) {
 		playerPaddle.update();
 		ball.update();
 		if( testBlock.checkBallIntersect(ball) )
@@ -256,6 +269,7 @@ function render() {
 
 function init() {
 	context = $("#demo-canvas")[0].getContext("2d");
+	gameStarted = false;
 	gameover = false;
 
 	playerPaddle = new Paddle(100, 25, 8, "rgb(0, 0, 0)");
