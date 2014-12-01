@@ -195,6 +195,15 @@
 		}
 	}
 
+	BlockList.prototype.retrieveBlock = function(x, y) {
+		for( var i=0; i<this.blocks.length; i++ ) {
+			if( this.blocks[i].x == x && this.blocks[i].y == y )
+				return this.blocks[i];
+			else
+				return null;
+		}
+	}
+
 	BlockList.prototype.drawBlocks = function() {
 		for( var i=0; i<this.blocks.length; i++ ) {
 			this.blocks[i].draw();
