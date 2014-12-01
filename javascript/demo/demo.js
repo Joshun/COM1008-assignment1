@@ -166,8 +166,8 @@
 	/*====================================================================*/
 
 	/* Block list object definition ======================================*/
-	function BlockList(freeRows) {
-		this.rows = ( SCREEN_HEIGHT - freeRows ) / BLOCK_SIZE;
+	function BlockList(freePx) {
+		this.rows = ( SCREEN_HEIGHT - freePx ) / BLOCK_SIZE;
 		this.columns = SCREEN_WIDTH / BLOCK_SIZE;
 		this.blocks = [];
 	}
