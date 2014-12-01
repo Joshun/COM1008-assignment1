@@ -169,11 +169,9 @@
 	function BlockList(freeRows) {
 		this.rows = ( SCREEN_HEIGHT - freeRows ) / BLOCK_SIZE;
 		this.columns = SCREEN_WIDTH / BLOCK_SIZE;
-		this.blocks = new Array(this.rows);
-		for(var i=0; i<this.rows; i++) {
-			this.blocks[i] = new Array(this.columns);
-		}
+		this.blocks = [];
 	}
+		
 
 	BlockList.prototype.addBlocks = function(style) {
 		var fstyle;
@@ -192,15 +190,14 @@
 						fstyle = "rgb(0,0,0)";
 				}
 					
-				this.blocks[row][column] = new Block(column*BLOCK_SIZE, row*BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE, style, fstyle);
+				this.blocks[(row * this.columns) + column] = new Block(column*BLOCK_SIZE, row*BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE, style, fstyle);
 			}
 		}
 	}
 
 	BlockList.prototype.drawBlocks = function() {
-		for( var row=0; row<this.rows; row++ ) {
-			for( var column=0; column<this.columns; column++ )
-				this.blocks[row][column].draw();
+		for( var i=0; i<this.rows; i++ ) {
+			this.blocks[i].draw();
 		}
 	}
 
