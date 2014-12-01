@@ -6,6 +6,7 @@
 	var SCREEN_WIDTH = 500;
 	var SCREEN_HEIGHT = 500;
 	var BLOCK_SIZE = 50;
+	var BLOCKS_PER_ROW = SCREEN_WIDTH / BLOCK_SIZE;
 	var FPS = 30;
 
 	var NUM_LIVES = 3;
@@ -196,12 +197,13 @@
 	}
 
 	BlockList.prototype.retrieveBlock = function(x, y) {
-		for( var i=0; i<this.blocks.length; i++ ) {
-			if( this.blocks[i].x == x && this.blocks[i].y == y )
-				return this.blocks[i];
+			if( y < this.rows ) {
+				console.log("found");
+				return this.blocks[(y * BLOCKS_PER_ROW) + x];
+			}
 			else
 				return null;
-		}
+	
 	}
 
 	BlockList.prototype.drawBlocks = function() {
@@ -265,7 +267,9 @@
 			ball.update();
 			if( testBlock.checkBallIntersect(ball) )
 				console.log("COLLISION!");
-			console.log(blocks.computeBallPosition(ball));
+				var arr = blocks.computeBallPosition(ball);
+			console.log(arr);
+			blocks.retrieveBlock(arr[0], arr[1]);
 		}
 		else {
 			clear();
