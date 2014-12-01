@@ -200,7 +200,13 @@
 			this.blocks[i].draw();
 		}
 	}
+	
+	BlockList.prototype.computeBallPosition = function(ball) {
+		var ballColumn = Math.round(ball.x / BLOCK_SIZE);
+		var ballRow = Math.round(ball.y / BLOCK_SIZE);
 
+		return [ballColumn, ballRow];
+	}
 	/*====================================================================*/
 
 	function gameOver(style, font) {
@@ -250,6 +256,7 @@
 			ball.update();
 			if( testBlock.checkBallIntersect(ball) )
 				console.log("COLLISION!");
+			console.log(blocks.computeBallPosition(ball));
 		}
 		else {
 			clear();
