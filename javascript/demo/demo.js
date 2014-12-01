@@ -196,7 +196,7 @@
 	}
 
 	BlockList.prototype.drawBlocks = function() {
-		for( var i=0; i<this.rows; i++ ) {
+		for( var i=0; i<this.blocks.length; i++ ) {
 			this.blocks[i].draw();
 		}
 	}
@@ -259,8 +259,8 @@
 		
 		clear();
 		playerPaddle.draw();
-		//blocks.drawBlocks();
-		testBlock.draw();
+		blocks.drawBlocks();
+		//testBlock.draw();
 
 		ball.draw();
 	}
