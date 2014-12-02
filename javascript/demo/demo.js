@@ -20,10 +20,8 @@
 
 	var testBlock;
 
-	var gameStarted;
-	var gameEnded;
-	var endState;
-	var endStates = { GAMEOVER: 0, GAMEWIN: 1 };
+	var states = { INITIAL: 0, STARTED: 1, GAMEOVER: 2, GAMEWIN: 3 };
+	var gameState;
 
 	/* Ball object definition ============================================*/
 	function Ball(x, y, r, speed, style) {
@@ -57,8 +55,7 @@
 			playerPaddle.centre();
 		}
 		else {
-			gameEnded = true;
-			endState = endStates.GAMEOVER;
+			gameState = states.GAMEOVER;
 		}
 	}
 	
@@ -280,7 +277,7 @@
 	}
 
 	function onKeyDown(evt) {
-		if( ! gameStarted) gameStarted = true;
+		if( gameState == states.INITIAL ) gameState = states.STARTED;
 		if( evt.keyCode == 39 ) rightDown = true;
 		else if( evt.keyCode == 37 ) leftDown = true;
 	}
@@ -304,12 +301,12 @@
 	}
 
 	function render() {
-		if( ! gameStarted ) {
+		if( gameState == states.INITIAL ) {
 			clear();
 			gameMenu("rgb(0,0,0)", "bold 32px Arial");
 			return;
 		}
-		else if( ! gameEnded ) {
+		else if( gameState == states.STARTED ) {
 			playerPaddle.update();
 			ball.update();
 			if( testBlock.checkBallIntersect(ball) )
@@ -324,7 +321,7 @@
 
 			//console.log(arr);
 		}
-		else {
+		else if( gameState == states.GAMEOVER ) {
 			clear();
 			gameOver("rgb(0,0,0)", "bold 64px Arial");
 			return;
@@ -340,9 +337,7 @@
 
 	function init() {
 		context = $("#demo-canvas")[0].getContext("2d");
-		gameStarted = false;
-		gameEnded = false;
-		endState = endStates.GAMEOVER;
+		gameState = states.INITIAL;
 
 		playerPaddle = new Paddle(100, 25, 8, "rgb(0, 0, 0)");
 		playerPaddle.centre();
