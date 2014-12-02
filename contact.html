@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<title>Jmoey Web Design</title>
 	<link rel="stylesheet" type="text/css" href="stylesheets/normalize.css"/>
 	<link rel="stylesheet" type="text/css" href="stylesheets/jmoey.css"/>
 	<link rel="stylesheet" type="text/css" href="stylesheets/contact.css"/>
@@ -40,17 +41,19 @@
 			<a href="mailto:contact@jmoey-web.co.uk">contact@jmoey-web.co.uk</a>
 		</p>
 		
-		<form>
+		<form name="contact-form" action="http://www.dcs.shef.ac.uk/cgi-bin/FormMail.pl" method="get">
 			<label for="name-input">Name:</label>
-			<input type="text" id="name-input" name="name-input"/>
+			<input type="text" id="name-input" name="name-input" placeholder="Full Name"/>
 			
-			<label for="email-input">Email:</label>
-			<input type="email" id="email-input" name="email-input"/>
+			<label for="email-input">Your Email:</label>
+			<input type="email" id="email-input" name="email-input" placeholder="someone@example.com"/>
+			<input type="hidden" name="recipient" value="jmoleary1@sheffield.ac.uk" />
 			
 			<div>
 				<label for="message-input">Message:</label>
-				<textarea rows="5" cols="50" id="message-input" name="message-input" class="message-input">Message to company</textarea>
+				<textarea rows="5" cols="50" id="message-input" name="message-input" class="message-input" placeholder="Message to company"></textarea>
 			</div>
+			<input type="submit" value="Send Message"/>
 		</form>
 	</div>
 	<footer>&copy; Jmoey Web Design 2014</footer>
