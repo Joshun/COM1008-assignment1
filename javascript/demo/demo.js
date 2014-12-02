@@ -21,7 +21,9 @@
 	var testBlock;
 
 	var gameStarted;
-	var gameover;
+	var gameEnded;
+	var endState;
+	var endStates = { GAMEOVER: 0, GAMEWIN: 1 };
 
 	/* Ball object definition ============================================*/
 	function Ball(x, y, r, speed, style) {
@@ -54,8 +56,10 @@
 			playerPaddle.width /= 2;
 			playerPaddle.centre();
 		}
-		else
-			gameover = true;
+		else {
+			gameEnded = true;
+			endState = endStates.GAMEOVER;
+		}
 	}
 	
 	Ball.prototype.processCollision = function(collisionType) {
@@ -305,7 +309,7 @@
 			gameMenu("rgb(0,0,0)", "bold 32px Arial");
 			return;
 		}
-		else if( ! gameover ) {
+		else if( ! gameEnded ) {
 			playerPaddle.update();
 			ball.update();
 			if( testBlock.checkBallIntersect(ball) )
@@ -337,7 +341,8 @@
 	function init() {
 		context = $("#demo-canvas")[0].getContext("2d");
 		gameStarted = false;
-		gameover = false;
+		gameEnded = false;
+		endState = endStates.GAMEOVER;
 
 		playerPaddle = new Paddle(100, 25, 8, "rgb(0, 0, 0)");
 		playerPaddle.centre();
