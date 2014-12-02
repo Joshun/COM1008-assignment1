@@ -199,16 +199,24 @@
 	BlockList.prototype.retrieveBlock = function(x, y) {
 			if( y < this.rows ) {
 				console.log("found");
-				return this.blocks[(y * BLOCKS_PER_ROW) + x];
+				// need to set this to null
+				return (y * BLOCKS_PER_ROW) + x;
 			}
 			else
 				return null;
 	
 	}
+	
+	BlockList.prototype.removeBlock = function(x, y) {
+		var blockIndex = this.retrieveBlock(x, y);
+		if( blockIndex != null )
+			this.blocks[blockIndex] = null;
+	}
 
 	BlockList.prototype.drawBlocks = function() {
 		for( var i=0; i<this.blocks.length; i++ ) {
-			this.blocks[i].draw();
+			if( this.blocks[i] != null )
+				this.blocks[i].draw();
 		}
 	}
 	
@@ -267,9 +275,10 @@
 			ball.update();
 			if( testBlock.checkBallIntersect(ball) )
 				console.log("COLLISION!");
-				var arr = blocks.computeBallPosition(ball);
+			var arr = blocks.computeBallPosition(ball);
+			var currentBlock = blocks.removeBlock(arr[0], arr[1]);
+
 			console.log(arr);
-			blocks.retrieveBlock(arr[0], arr[1]);
 		}
 		else {
 			clear();
