@@ -20,6 +20,8 @@
 
 	var states = { INITIAL: 0, STARTED: 1, GAMEOVER: 2, GAMEWIN: 3 };
 	var gameState;
+	
+	var canvasMinX = 0, canvasMaxX = 0;
 
 	/* Ball object definition ============================================*/
 	function Ball(x, y, r, speed, style) {
@@ -270,13 +272,17 @@
 		context.fillText(message, SCREEN_WIDTH/centrepos, SCREEN_HEIGHT/2);
 	}
 
-	function onKeyDown(evt) {
+	function handleState() {
 		if( gameState == states.INITIAL )
 			gameState = states.STARTED;
 		else if( gameState == states.GAMEOVER || gameState == states.GAMEWIN ) {
 			setInitial();
 			gameState = states.STARTED;
 		}
+	}
+
+	function onKeyDown(evt) {
+		handleState();
 		
 		if( evt.keyCode == 39 ) rightDown = true;
 		else if( evt.keyCode == 37 ) leftDown = true;
@@ -293,8 +299,20 @@
 		}
 	}
 
+	function onMouseMove(evt) {
+		if (evt.pageX > canvasMinX && evt.pageX < canvasMaxX) {
+			playerPaddle.x = evt.pageX - canvasMinX - (playerPaddle.width/2);
+		}
+    }
+    
+    function onMouseUp() {
+		handleState();
+	}
+
 	$(document).keydown(onKeyDown);
 	$(document).keyup(onKeyUp);
+	$(document).mousemove(onMouseMove);
+	$(document).mouseup(onMouseUp);
 
 	function clear() {
 		context.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -352,6 +370,8 @@
 
 	function init() {
 		context = $("#demo-canvas")[0].getContext("2d");
+		canvasMinX = $('#demo-canvas').offset().left;
+		canvasMaxX = canvasMinX + SCREEN_WIDTH;
 		setInitial();
 		
 		intervalID = setInterval(render, INTERVAL);		
