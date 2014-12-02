@@ -18,8 +18,6 @@
 	var ball;
 	var blocks;
 
-	var testBlock;
-
 	var states = { INITIAL: 0, STARTED: 1, GAMEOVER: 2, GAMEWIN: 3 };
 	var gameState;
 
@@ -230,12 +228,6 @@
 	
 	}
 	
-	BlockList.prototype.removeBlock = function(x, y) {
-		var blockIndex = this.retrieveBlock(x, y);
-		if( blockIndex != null )
-			this.blocks[blockIndex] = null;
-	}
-	
 	BlockList.prototype.checkBallIntersect = function(ball) {
 		for( var i=0; i<this.blocks.length; i++ ) {
 			if( this.blocks[i] != null ) {
@@ -262,22 +254,30 @@
 
 		return [ballColumn, ballRow];
 	}
+	
+	BlockList.prototype.checkGameWin = function() {
+		for( var i=0; i<this.blocks.length; i++ ) {
+			if( this.blocks[i] != null )
+				return false;
+		}
+		return true;
+	}
 	/*====================================================================*/
 
-	function gameOver(style, font) {
+	function displayMessage(message, centrepos, style, font) {
 		context.fillStyle = style;
 		context.font = font;
-		context.fillText("Game Over!", SCREEN_WIDTH/8, SCREEN_HEIGHT/2);
-	}
-
-	function gameMenu(style, font) {
-		context.fillStyle = style;
-		context.font = font;
-		context.fillText("Press any key to start...", SCREEN_WIDTH/8, SCREEN_HEIGHT/2);
+		context.fillText(message, SCREEN_WIDTH/centrepos, SCREEN_HEIGHT/2);
 	}
 
 	function onKeyDown(evt) {
-		if( gameState == states.INITIAL ) gameState = states.STARTED;
+		if( gameState == states.INITIAL )
+			gameState = states.STARTED;
+		else if( gameState == states.GAMEOVER || gameState == states.GAMEWIN ) {
+			setInitial();
+			gameState = states.STARTED;
+		}
+		
 		if( evt.keyCode == 39 ) rightDown = true;
 		else if( evt.keyCode == 37 ) leftDown = true;
 	}
@@ -303,27 +303,29 @@
 	function render() {
 		if( gameState == states.INITIAL ) {
 			clear();
-			gameMenu("rgb(0,0,0)", "bold 32px Arial");
+			displayMessage("Press any key...", 4, "rgb(0,0,0)", "bold 32px Arial");
 			return;
 		}
 		else if( gameState == states.STARTED ) {
 			playerPaddle.update();
 			ball.update();
-			if( testBlock.checkBallIntersect(ball) )
-				console.log("COLLISION!");
-			//var arr = blocks.computeBallPosition(ball);
-			//var currentBlock = blocks.removeBlock(arr[0], arr[1]);
 			var collisionType = blocks.checkBallIntersect(ball);
 			ball.processCollision(collisionType);
-			console.log(collisionType);
 			
+			if( blocks.checkGameWin() )
+				gameState = states.GAMEWIN;
 			
 
 			//console.log(arr);
 		}
 		else if( gameState == states.GAMEOVER ) {
 			clear();
-			gameOver("rgb(0,0,0)", "bold 64px Arial");
+			displayMessage("Game Over!", 8, "rgb(0,0,0)", "bold 64px Arial");
+			return;
+		}
+		else if( gameState == states.GAMEWIN ) {
+			clear();
+			displayMessage("You Win!!!", 8, "rgb(0,0,0)", "bold 64px Arial");
 			return;
 		}
 		
@@ -335,8 +337,7 @@
 		ball.draw();
 	}
 
-	function init() {
-		context = $("#demo-canvas")[0].getContext("2d");
+	function setInitial() {
 		gameState = states.INITIAL;
 
 		playerPaddle = new Paddle(100, 25, 8, "rgb(0, 0, 0)");
@@ -347,9 +348,12 @@
 		
 		blocks = new BlockList(200);
 		blocks.addBlocks("rgb(0, 0, 0)");
-		
-		testBlock = new Block(250, 250, 100, 100, "black", "white");
+	}
 
+	function init() {
+		context = $("#demo-canvas")[0].getContext("2d");
+		setInitial();
+		
 		intervalID = setInterval(render, INTERVAL);		
 	}	
 
