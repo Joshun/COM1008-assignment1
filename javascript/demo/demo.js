@@ -161,6 +161,14 @@
 			if( ((ball.y + ball.r) > this.y) && ((ball.y + this.r) < (this.y + this.height)) )
 				return true;
 		}
+		else if( ((ball.y - ball.r) > this.y) && ((ball.y + this.r < (this.y + this.height)) ) ) {
+			// Left edge of block
+			if( ((ball.x + ball.r) < (this.x + this.width)) && ((ball.x + ball.r) > this.x) )
+				return true;
+			// Right edge of block
+			if( ((ball.x - ball.r) < (this.x + this.width)) && ((ball.x - ball.r) > this.x) )
+				return true;
+		}
 		else
 			return false;
 	}
