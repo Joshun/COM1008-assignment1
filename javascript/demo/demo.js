@@ -57,6 +57,19 @@
 		else
 			gameover = true;
 	}
+	
+	Ball.prototype.processCollision = function(collisionType) {
+		switch(collisionType) {
+			case Block.collision.LEFT:
+			case Block.collision.RIGHT:
+				ball.dx = -ball.dx;
+				break;
+			case Block.collision.TOP:
+			case Block.collision.BOTTOM:
+				ball.dy = -ball.dy;
+				break;
+		}
+	}
 
 	Ball.prototype.update = function() {
 		if( (this.x - this.r) < 0 || (this.x + this.r) > SCREEN_WIDTH ) {
@@ -140,6 +153,7 @@
 		this.height = height;
 		this.sstyle = sstyle;
 		this.fstyle = fstyle;
+		Block.collision = { LEFT: 0, RIGHT: 1, TOP: 2, BOTTOM: 3 };
 	}
 
 	Block.prototype.draw = function() {
@@ -156,21 +170,21 @@
 		if( ((ball.x - ball.r) > this.x) && ((ball.x + ball.r) < (this.x + this.width)) ) {
 			/* Bottom edge of block */
 			if( ((ball.y - ball.r) < (this.y + this.height)) && ((ball.y - ball.r) > this.y) )
-				return true;
+				return Block.collision.BOTTOM;
 			/* Top edge of block */
 			if( ((ball.y + ball.r) > this.y) && ((ball.y + this.r) < (this.y + this.height)) )
-				return true;
+				return Block.collision.TOP;
 		}
 		else if( ((ball.y - ball.r) > this.y) && ((ball.y + this.r < (this.y + this.height)) ) ) {
 			// Left edge of block
 			if( ((ball.x + ball.r) < (this.x + this.width)) && ((ball.x + ball.r) > this.x) )
-				return true;
+				return Block.collision.LEFT;
 			// Right edge of block
 			if( ((ball.x - ball.r) < (this.x + this.width)) && ((ball.x - ball.r) > this.x) )
-				return true;
+				return Block.collision.RIGHT;
 		}
 		else
-			return false;
+			return null;
 	}
 	/*====================================================================*/
 
@@ -223,9 +237,15 @@
 	
 	BlockList.prototype.checkBallIntersect = function(ball) {
 		for( var i=0; i<this.blocks.length; i++ ) {
-			if( this.blocks[i] != null && this.blocks[i].checkBallIntersect(ball) )
-				this.blocks[i] = null;
+			if( this.blocks[i] != null ) {
+				var collisionType = this.blocks[i].checkBallIntersect(ball);
+				if( collisionType != null ) {
+					this.blocks[i] = null;
+					return collisionType;
+				}
+			}
 		}
+		return null;
 	}
 
 	BlockList.prototype.drawBlocks = function() {
@@ -292,7 +312,11 @@
 				console.log("COLLISION!");
 			//var arr = blocks.computeBallPosition(ball);
 			//var currentBlock = blocks.removeBlock(arr[0], arr[1]);
-			blocks.checkBallIntersect(ball);
+			var collisionType = blocks.checkBallIntersect(ball);
+			ball.processCollision(collisionType);
+			console.log(collisionType);
+			
+			
 
 			//console.log(arr);
 		}
