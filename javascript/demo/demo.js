@@ -7,7 +7,7 @@
 	var SCREEN_HEIGHT = 500;
 	var BLOCK_SIZE = 50;
 	var BLOCKS_PER_ROW = SCREEN_WIDTH / BLOCK_SIZE;
-	var FPS = 30;
+	var INTERVAL = 25;
 
 	var NUM_LIVES = 3;
 
@@ -212,6 +212,13 @@
 		if( blockIndex != null )
 			this.blocks[blockIndex] = null;
 	}
+	
+	BlockList.prototype.checkBallIntersect = function(ball) {
+		for( var i=0; i<this.blocks.length; i++ ) {
+			if( this.blocks[i] != null && this.blocks[i].checkBallIntersect(ball) )
+				this.blocks[i] = null;
+		}
+	}
 
 	BlockList.prototype.drawBlocks = function() {
 		for( var i=0; i<this.blocks.length; i++ ) {
@@ -275,10 +282,11 @@
 			ball.update();
 			if( testBlock.checkBallIntersect(ball) )
 				console.log("COLLISION!");
-			var arr = blocks.computeBallPosition(ball);
-			var currentBlock = blocks.removeBlock(arr[0], arr[1]);
+			//var arr = blocks.computeBallPosition(ball);
+			//var currentBlock = blocks.removeBlock(arr[0], arr[1]);
+			blocks.checkBallIntersect(ball);
 
-			console.log(arr);
+			//console.log(arr);
 		}
 		else {
 			clear();
@@ -310,7 +318,7 @@
 		
 		testBlock = new Block(250, 250, 100, 100, "black", "white");
 
-		intervalID = setInterval(render, FPS);		
+		intervalID = setInterval(render, INTERVAL);		
 	}	
 
 	$(document).ready(init);
