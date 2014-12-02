@@ -321,7 +321,7 @@
 	function render() {
 		if( gameState == states.INITIAL ) {
 			clear();
-			displayMessage("Press any key...", 4, "rgb(0,0,0)", "bold 32px Arial");
+			displayMessage("Press any key, or click...", 4, "rgb(0,0,0)", "bold 32px Arial");
 			return;
 		}
 		else if( gameState == states.STARTED ) {
