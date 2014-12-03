@@ -301,7 +301,9 @@
 
 	function onMouseMove(evt) {
 		if (evt.pageX > canvasMinX && evt.pageX < canvasMaxX) {
-			playerPaddle.x = evt.pageX - canvasMinX - (playerPaddle.width/2);
+			var xCoord = evt.pageX - canvasMinX - (playerPaddle.width/2);
+			if( xCoord > 0 && (xCoord + playerPaddle.width) < SCREEN_WIDTH )
+				playerPaddle.x = evt.pageX - canvasMinX - (playerPaddle.width/2);
 		}
     }
     
