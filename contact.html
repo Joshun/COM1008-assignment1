@@ -43,15 +43,15 @@
 		
 		<form name="contact-form" action="http://www.dcs.shef.ac.uk/cgi-bin/FormMail.pl" method="get">
 			<label for="name-input">Name:</label>
-			<input type="text" id="name-input" name="name-input" placeholder="Full Name"/>
+			<input type="text" id="name-input" name="name-input" placeholder="Full Name" required="required"/>
 			
 			<label for="email-input">Your Email:</label>
-			<input type="email" id="email-input" name="email-input" placeholder="someone@example.com"/>
-			<input type="hidden" name="recipient" value="jmoleary1@sheffield.ac.uk" />
+			<input type="email" id="email-input" name="email-input" placeholder="someone@example.com" required="required"/>
+			<input type="hidden" name="recipient" value="jmoleary1@sheffield.ac.uk"/>
 			
 			<div>
 				<label for="message-input">Message:</label>
-				<textarea rows="5" cols="50" id="message-input" name="message-input" class="message-input" placeholder="Message to company"></textarea>
+				<textarea rows="5" cols="50" id="message-input" name="message-input" class="message-input" placeholder="Message to company" required="required"></textarea>
 			</div>
 			<input type="submit" value="Send Message"/>
 		</form>
