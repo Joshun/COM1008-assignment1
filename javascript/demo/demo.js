@@ -24,7 +24,8 @@
 	var canvasMinX = 0, canvasMaxX = 0;
 
 	var companyLogoImg;
-	var companyLogoImgDimensions;
+	var companyLogoImgWidth;
+	var companyLogoImgHeight;
 
 	/* Ball object definition ============================================*/
 	function Ball(x, y, r, speed, style) {
@@ -273,11 +274,13 @@
 		companyLogoImg.src = "images/logo_mini.png";
 		companyLogoImg.onload = startRender;
 
-		companyLogoImgDimensions = [ companyLogoImg.width, companyLogoImg.height ];
+		companyLogoImgWidth = companyLogoImg.width;
+		companyLogoImgHeight = companyLogoImg.height;
 	}
 
 	function drawCompanyLogo(x, y) {
-		context.drawImage(companyLogoImg, x - (companyLogoImgDimensions[0]/2), y - (companyLogoImgDimensions[1]/2))
+		//context.drawImage(companyLogoImg)
+		context.drawImage(companyLogoImg, x - (companyLogoImgWidth/2), y - (companyLogoImgHeight/2));
 	}
 
 	function displayMessage(message, centrepos, style, font) {
