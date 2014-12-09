@@ -20,6 +20,12 @@
 		#F3F2EA 150px,
 		#D1E9FF,
 		#D1E9FF 150px);
+	background-image: -o-linear-gradient(
+		left, 
+		#F3F2EA, 
+		#F3F2EA 150px,
+		#D1E9FF,
+		#D1E9FF 150px);
 	background-image: linear-gradient(
 		left, 
 		#F3F2EA, 
