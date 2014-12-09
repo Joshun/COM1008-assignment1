@@ -273,7 +273,7 @@
 	function loadResources() {
 		companyLogoImg.src = "images/logo_mini.png";
 		companyLogoImg.onload = startRender;
-
+		
 		companyLogoImgWidth = companyLogoImg.width;
 		companyLogoImgHeight = companyLogoImg.height;
 	}
