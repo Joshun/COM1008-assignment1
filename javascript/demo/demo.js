@@ -23,6 +23,9 @@
 	
 	var canvasMinX = 0, canvasMaxX = 0;
 
+	var companyLogoImg;
+	var companyLogoImgDimensions;
+
 	/* Ball object definition ============================================*/
 	function Ball(x, y, r, speed, style) {
 		this.x = x;
@@ -266,6 +269,17 @@
 	}
 	/*====================================================================*/
 
+	function loadResources() {
+		companyLogoImg.src = "images/logo_mini.png";
+		companyLogoImg.onload = startRender;
+
+		companyLogoImgDimensions = [ companyLogoImg.width, companyLogoImg.height ];
+	}
+
+	function drawCompanyLogo(x, y) {
+		context.drawImage(companyLogoImg, x - (companyLogoImgDimensions[0]/2), y - (companyLogoImgDimensions[1]/2))
+	}
+
 	function displayMessage(message, centrepos, style, font) {
 		context.fillStyle = style;
 		context.font = font;
@@ -320,10 +334,15 @@
 		context.clearRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 	}
 
+	function startRender() {
+		intervalID = setInterval(render, INTERVAL);
+	}
+
 	function render() {
 		if( gameState == states.INITIAL ) {
 			clear();
 			displayMessage("Press any key, or click...", 8, "rgb(0,0,0)", "bold 32px Arial");
+			drawCompanyLogo(SCREEN_WIDTH/2, 400)
 			return;
 		}
 		else if( gameState == states.STARTED ) {
@@ -375,8 +394,11 @@
 		canvasMinX = $('#demo-canvas').offset().left;
 		canvasMaxX = canvasMinX + SCREEN_WIDTH;
 		setInitial();
+		companyLogoImg = new Image();
+
+		loadResources();
 		
-		intervalID = setInterval(render, INTERVAL);		
+		/* intervalID = setInterval(render, INTERVAL);	*/
 	}	
 
 	$(document).ready(init);
