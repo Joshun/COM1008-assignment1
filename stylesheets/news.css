@@ -3,7 +3,11 @@ h2 {
 }
 
 .news-content p {
-	padding-bottom: 10px;
+	padding-bottom: 2em;
+}
+
+.news-content img {
+	float: right;
 }
 
 .date {
