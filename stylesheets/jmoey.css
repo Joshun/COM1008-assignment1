@@ -5,6 +5,7 @@
 
 #wrapper {
 	width: 75%;
+	max-width: 1200px; /* Prevent text from "spilling out" too wide */
 	margin: auto;
 	
 	background-color: #D1E9FF; /* Fallback background colour if gradient is unsupported */
