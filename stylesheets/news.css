@@ -1,9 +1,12 @@
 h2 {
 	text-shadow: 2px 2px #9999FF;
+	padding-bottom: 2px;
+	border-bottom: 1px solid grey;
 }
 
 .news-content p {
 	padding-bottom: 2em;
+	margin-right: 10em;
 }
 
 .news-content img {

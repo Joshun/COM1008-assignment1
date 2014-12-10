@@ -42,7 +42,7 @@ body {
 /* Default indentation for all main content elements (everything other than navbar, header and footer) */
 #main-content {
 	margin-left: 200px; /* Navbar is 150px - indent 50px from navbar */
-	margin-right: 50px; /* Indent 50px to right of page */
+	margin-right: 150px; /* Indent 50px to right of page */
 	background-color: #D1E9FF; /* Fallback background colour if gradient fails */
 }
 
@@ -137,6 +137,37 @@ img.graphics {
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 
+/* Pull quote styling ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.pquote blockquote{
+	width: 200px;
+    background: url("../images/homepage/openquote.png") top left no-repeat;
+/*    color: #030;
+*/    font-size: 26px;
+    line-height: 0.9;
+    font-style: italic;
+/*    padding: 10px;
+*/    float: left;
+    min-height: 7em;
+}
+
+.pquote li {
+	list-style: none;
+	float: left;
+	padding: 1em 2em;
+}
+
+blockquote {
+    margin: 0;
+}
+
+.pquote blockquote p:first-letter {
+    font-size: 39px;
+    font-weight: bold;
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* Header and footer ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
 header {
 	background-image: url("../images/header_gradient.png");
 	background-repeat: repeat-x;
@@ -152,3 +183,4 @@ footer {
 	background-color: #A3E1FF;
 	font-size: 0.75em;
 }
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
