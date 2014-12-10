@@ -110,6 +110,10 @@ h1 {
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 
+.clear-both {
+	clear: both;
+}
+
 /* Paragraph definitions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 
@@ -126,6 +130,7 @@ img.logo {
 
 img.graphics {
 	float: right;
+	padding: 10px;
 	/*margin-right: 0.5em;*/
 }
 
