@@ -320,7 +320,7 @@
 		if (evt.pageX > canvasMinX && evt.pageX < canvasMaxX) {
 			var xCoord = evt.pageX - canvasMinX - (playerPaddle.width/2);
 			if( xCoord > 0 && (xCoord + playerPaddle.width) < SCREEN_WIDTH )
-				playerPaddle.x = evt.pageX - canvasMinX - (playerPaddle.width/2);
+				playerPaddle.x = xCoord;
 		}
     }
     
