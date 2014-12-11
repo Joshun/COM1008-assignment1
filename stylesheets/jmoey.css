@@ -38,6 +38,8 @@
 
 body {
 	background-color: #99F;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 1em;
 }
 
 /* Default indentation for all main content elements (everything other than navbar, header and footer) */
@@ -71,6 +73,7 @@ nav ul li a {
 	transition: background-color ease 1s;
 	text-decoration: none;
 	color: #4E1A8C;
+	font-size: 1.2em;
 }
 
 nav ul li a:clicked {
@@ -156,17 +159,24 @@ img.graphics {
 .pquote li {
 	list-style: none;
 	float: left;
-	padding: 1em 2em;
+	padding: 0.5em 1em;
+	margin: 0;
 }
 
 blockquote {
+	padding: 0;
     margin: 0;
 }
 
 .pquote blockquote p:first-letter {
-    font-size: 39px;
+    font-size: 2em;
     font-weight: bold;
 }
+
+.pquote .by {
+	font-size: 0.75em;	
+}
+
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 /* Header and footer ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -181,7 +191,7 @@ header {
 }
 
 footer {
-	margin-top: 25%;
+	clear: both;
 	padding: 10px 0 5px 10px; /* top: 10px, right: 0, bottom: 5px, left: 10px */
 	background-color: #A3E1FF;
 	font-size: 0.75em;
