@@ -4,7 +4,7 @@
 
 
 #wrapper {
-	width: 75%;
+	width: 80%;
 	max-width: 1200px; /* Prevent text from "spilling out" too wide */
 	margin: auto;
 	
@@ -147,25 +147,17 @@ img.graphics {
 .pquote blockquote{
 	width: 200px;
     background: url("../images/homepage/openquote.png") top left no-repeat;
-/*    color: #030;
-*/    font-size: 26px;
+    font-size: 1.75em;
     line-height: 0.9;
     font-style: italic;
-/*    padding: 10px;
-*/    float: left;
+    padding: 10px;
     min-height: 7em;
 }
 
 .pquote li {
 	list-style: none;
 	float: left;
-	padding: 0.5em 1em;
 	margin: 0;
-}
-
-blockquote {
-	padding: 0;
-    margin: 0;
 }
 
 .pquote blockquote p:first-letter {
