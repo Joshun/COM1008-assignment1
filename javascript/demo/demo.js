@@ -266,6 +266,7 @@
 			if( this.blocks[i] != null )
 				return false;
 		}
+		console.log("Game has been won.");
 		return true;
 	}
 	/*====================================================================*/
@@ -339,6 +340,7 @@
 
 	function startRender() {
 		intervalID = setInterval(render, INTERVAL);
+		console.log("Render() started, ID=" + intervalID);
 	}
 
 	function render() {
