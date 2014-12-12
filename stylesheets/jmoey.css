@@ -1,8 +1,10 @@
+/* Import web fonts */
+@import url(http://fonts.googleapis.com/css?family=Oswald);
+
+
+
 /* Wrapper, body and main-content wrapper
  * (needed for sidebar and page background to function correctly) ~~~~~~~~~~~~~ */
-
-
-
 #wrapper {
 	width: 80%;
 	max-width: 1200px; /* Prevent text from "spilling out" too wide */
@@ -27,6 +29,12 @@
 		#F3F2EA 150px,
 		#D1E9FF,
 		#D1E9FF 150px);
+	background-image: -ms-linear-gradient(
+		left, 
+		#F3F2EA, 
+		#F3F2EA 150px,
+		#D1E9FF,
+		#D1E9FF 150px);
 	background-image: linear-gradient(
 		left, 
 		#F3F2EA, 
@@ -35,6 +43,7 @@
 		#D1E9FF 150px);
 }
 
+@import url(http://fonts.googleapis.com/css?family=Oswald);
 
 body {
 	background-color: #99F;
