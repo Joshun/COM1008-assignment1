@@ -136,8 +136,11 @@ h1, h2, h3 {
 
 /* Image definitions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
-img.logo {
-	float: right
+
+
+.branding {
+	text-align: center;
+	margin: 0.75em 0;
 }
 
 img.graphics {
