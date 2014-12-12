@@ -194,10 +194,14 @@ img.graphics {
 header {
 	background-image: url("../images/header_gradient.png");
 	background-repeat: repeat-x;
-	height: 50px;
+	min-height: 150px;
 	padding-left: 200px;
 	font-family: "Oswald", sans-serif;
+	font-size: 4em;
+}
 
+header .small {
+	font-size: 0.35em;
 }
 
 footer {
