@@ -11,9 +11,19 @@ ul.address-details {
 	margin: 0;
 }
 
-.form-container input, textarea{
+.form-container input, textarea {
 	display: block;
-	outline: none;
-	border-color: #7D8C99;
-	border-style: solid;
+	/*outline: none;*/
+	/*border-color: #7D8C99;
+	border-style: solid;*/
+	border: 1px solid #7D8C99;
+	margin-bottom: 0.75em;
+}
+
+.form-container input:focus, textarea:focus {
+	border: 2px solid #7D8C99;
+}
+
+.form-container input.submit {
+	background-color: #FFA3B6;
 }
