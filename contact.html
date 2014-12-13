@@ -40,18 +40,24 @@
 		</p>
 		
 		<form name="contact-form" action="http://www.dcs.shef.ac.uk/cgi-bin/FormMail.pl" method="get">
+			<input type="hidden" name="recipient" value="jmoleary1@sheffield.ac.uk"/>
+			<div class="form-container">
 				<label for="name-input">Name:</label>
 				<input type="text" id="name-input" name="name-input" placeholder="Full Name" required="required"/>
+			</div>
+			<div class="form-container">
+				<label for="email-input">Your Email:</label>
+				<input type="email" id="email-input" name="email-input" placeholder="someone@example.com" required="required"/>
+			</div>
 			
-			<label for="email-input">Your Email:</label>
-			<input type="email" id="email-input" name="email-input" placeholder="someone@example.com" required="required"/>
-			<input type="hidden" name="recipient" value="jmoleary1@sheffield.ac.uk"/>
-			
-			<div>
+			<div class="form-container">
 				<label for="message-input">Message:</label>
 				<textarea rows="5" cols="50" maxlength="200" id="message-input" name="message-input" class="message-input" placeholder="Message to company" required="required"></textarea>
 			</div>
-			<input type="submit" value="Send Message"/>
+			<div class="form-container"></div>
+			<div class="form-container">
+				<input class="submit" type="submit" value="Send Message"/>
+			</div>
 		</form>
 	</div>
 	<footer>&copy; Jmoey Web Design 2014</footer>

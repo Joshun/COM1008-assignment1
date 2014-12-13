@@ -240,6 +240,7 @@
 				var collisionType = this.blocks[i].checkBallIntersect(ball);
 				if( collisionType != null ) {
 					this.blocks[i] = null;
+					console.log("Collision, block index " + i)
 					return collisionType;
 				}
 			}
