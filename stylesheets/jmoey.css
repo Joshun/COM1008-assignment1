@@ -1,6 +1,8 @@
 /* Import web fonts */
 @import url(http://fonts.googleapis.com/css?family=Oswald);
 @import url(http://fonts.googleapis.com/css?family=Raleway:400,700);
+
+
 /* Wrapper, body and main-content wrapper
  * (needed for sidebar and page background to function correctly) ~~~~~~~~~~~~~ */
 #wrapper {
@@ -12,45 +14,45 @@
 	background-image: -moz-linear-gradient(
 		left, 
 		#F3F2EA, 
-		#F3F2EA 150px,
+		#F3F2EA 160px,
 		#D1E9FF,
-		#D1E9FF 150px);
+		#D1E9FF 160px);
 	background-image: -webkit-linear-gradient(
 		left, 
 		#F3F2EA, 
-		#F3F2EA 150px,
+		#F3F2EA 160px,
 		#D1E9FF,
-		#D1E9FF 150px);
+		#D1E9FF 160px);
 	background-image: -o-linear-gradient(
 		left, 
 		#F3F2EA, 
-		#F3F2EA 150px,
+		#F3F2EA 160px,
 		#D1E9FF,
-		#D1E9FF 150px);
+		#D1E9FF 160px);
 	background-image: -ms-linear-gradient(
 		left, 
 		#F3F2EA, 
-		#F3F2EA 150px,
+		#F3F2EA 160px,
 		#D1E9FF,
-		#D1E9FF 150px);
+		#D1E9FF 160px);
 	background-image: linear-gradient(
 		left, 
 		#F3F2EA, 
-		#F3F2EA 150px,
+		#F3F2EA 160px,
 		#D1E9FF,
-		#D1E9FF 150px);
+		#D1E9FF 160px);
 }
 
 body {
 	background-color: #99F;
-	font-family: Raleway, sans-serif;
+	font-family: Raleway, Times, sans-serif;
 	font-size: 1.2em;
 }
 
 /* Default indentation for all main content elements (everything other than navbar, header and footer) */
 #main-content {
-	margin-left: 200px; /* Navbar is 150px - indent 50px from navbar */
-	margin-right: 150px; /* Indent 50px to right of page */
+	margin-left: 210px; /* Navbar is 160px - indent 50px from navbar */
+	margin-right: 60px; /* Indent 60px to right of page */
 	background-color: #D1E9FF; /* Fallback background colour if gradient fails */
 }
 
@@ -60,19 +62,18 @@ body {
 
 nav {
 	float: left;
-	width: 150px;
-	/* border: 1px solid grey; */
-
+	width: 160px;
 }
 
 nav ul {
+	margin: 0;
 	padding: 0;
 	list-style: none;
-	margin: 0;
 }
 
 nav ul li a {
 	padding: 10px 5px;
+	margin: 0;
 	background-color: #F3F2EA;
 	display: block;
 	transition: background-color ease 1s;
@@ -115,10 +116,6 @@ h1 {
 	font-weight: bolder;
 }
 
-h1, h2, h3 {
-	font-family: Raleway, sans-serif;
-}
-
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 
@@ -140,7 +137,8 @@ h1, h2, h3 {
 
 .branding {
 	text-align: center;
-	margin: 0.75em 0;
+/*	margin: 1em 0;
+*/	padding: 0.75em 0;
 }
 
 img.graphics {
@@ -197,10 +195,10 @@ img.graphics {
 header {
 	background-image: url("../images/header_gradient.png");
 	background-repeat: repeat-x;
-	min-height: 150px;
 	padding-left: 200px;
-	font-family: "Oswald", sans-serif;
+	font-family: "Oswald", "Comic Sans MS", sans-serif;
 	font-size: 4em;
+	min-height: 140px;
 }
 
 header .small {
