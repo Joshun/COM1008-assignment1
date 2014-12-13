@@ -11,21 +11,9 @@ ul.address-details {
 	margin: 0;
 }
 
-.form-container  {
-	display: table-row;
-	width: 500px;
-}
-
-.form-container input {
-	display: table-cell;
-}
-
-.form-container label {
-	display: table-cell;
-	vertical-align: top;
-/*	width: 140px;
-*/}
-
-.form-container textarea {
-	display: table-cell;
+.form-container input, textarea{
+	display: block;
+	outline: none;
+	border-color: #7D8C99;
+	border-style: solid;
 }
