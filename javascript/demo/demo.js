@@ -47,13 +47,13 @@ Ball.prototype.draw = function() {
 	context.arc(this.x, this.y, this.r, 0, Math.PI * 2);
 	context.closePath();
 	context.fill();
-}
+};
 
 /* Function to centre the ball on the screen */
 Ball.prototype.centre = function() {
 	this.x = SCREEN_WIDTH / 2;
 	this.y = SCREEN_HEIGHT / 2;
-}
+};
 
 /* Function to be called when life is lost */
 Ball.prototype.dead = function() {
@@ -66,7 +66,7 @@ Ball.prototype.dead = function() {
 	else {
 		gameState = states.GAMEOVER;
 	}
-}
+};
 
 /* Function to determine what happens when a block collides with the ball,
  * i.e. what direction to turn in */
@@ -81,7 +81,7 @@ Ball.prototype.processCollision = function(collisionType) {
 			ball.dy = -ball.dy;
 			break;
 	}
-}
+};
 
 /* Function to update the ball's position based on its speed and direction,
  * called from the render method */
@@ -102,7 +102,7 @@ Ball.prototype.update = function() {
 	
 	this.x += this.dx;
 	this.y += this.dy;
-}
+};
 
 /*====================================================================*/
 
@@ -126,22 +126,22 @@ Paddle.prototype.draw = function() {
 	context.rect(this.x, this.y, this.width, this.height);
 	context.closePath();
 	context.fill();
-}
+};
 
 /* Function to centre paddle object on screen */
 Paddle.prototype.centre = function() {
 	this.x = (SCREEN_WIDTH / 2) - (this.width / 2);
-}
+};
 
 Paddle.prototype.moveLeft = function() {
 	if( (this.x - this.speed) > 0)
 		this.x -= this.speed;
-}
+};
 
 Paddle.prototype.moveRight = function() {
 	if( ((this.x + this.width) + this.speed) < SCREEN_WIDTH )
 		this.x += this.speed;
-}
+};
 
 /* Function to determine whether the ball has hit the paddle */
 Paddle.prototype.checkBallIntersect = function(ball) {
@@ -149,7 +149,7 @@ Paddle.prototype.checkBallIntersect = function(ball) {
 		return true;
 	else
 		return false;
-}
+};
 
 /* Function to update the paddle's position based on key presses */
 Paddle.prototype.update = function() {
@@ -163,7 +163,7 @@ Paddle.prototype.update = function() {
 		this.moveRight();
 		//console.log(this.x);
 	}
-}
+};
 /*====================================================================*/
 
 /* Block object definition ===========================================*/
@@ -187,7 +187,7 @@ Block.prototype.draw = function() {
 	context.closePath();
 	context.stroke();
 	context.fill();
-}
+};
 
 /* Function to determine whether the ball has hit a particular block instance */
 Block.prototype.checkBallIntersect = function(ball) {
@@ -209,7 +209,7 @@ Block.prototype.checkBallIntersect = function(ball) {
 	}
 	else
 		return null;
-}
+};
 /*====================================================================*/
 
 /* Block list object definition ======================================*/
@@ -250,11 +250,11 @@ BlockList.prototype.addBlocks = function(style) {
 			this.blocks[(row * this.columns) + column] = new Block(column*BLOCK_SIZE, row*BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE, style, fstyle);
 		}
 	}
-}
+};
 
 BlockList.prototype.removeBlock = function(index) {
 	this.blocks[index] = null;
-}
+};
 
 /* Function to determine whether the ball has collided with any of the blocks in the blocklist */
 BlockList.prototype.checkBallIntersect = function(ball) {
@@ -267,13 +267,13 @@ BlockList.prototype.checkBallIntersect = function(ball) {
 				 * 	(null has been used here instead of removing it from the array altogether,
 				 	* as removing it from the array would mess up the array's indexing system) */
 				this.removeBlock(i);
-				console.log("Collision, block index " + i)
+				console.log("Collision, block index " + i);
 				return collisionType;
 			}
 		}
 	}
 	return null;
-}
+};
 
 /* Draw all of the blocks in the blocklist onto the canvas */
 BlockList.prototype.drawBlocks = function() {
@@ -281,7 +281,7 @@ BlockList.prototype.drawBlocks = function() {
 		if( this.blocks[i] != null )
 			this.blocks[i].draw();
 	}
-}
+};
 
 /* Function to see if the game has been one - see if any blocks are remaining */
 BlockList.prototype.checkGameWin = function() {
@@ -291,7 +291,7 @@ BlockList.prototype.checkGameWin = function() {
 	}
 	console.log("Game has been won.");
 	return true;
-}
+};
 /*====================================================================*/
 
 /* Load additional resources required for the game to work, in this case the company's logo
@@ -394,7 +394,7 @@ function render() {
 	if( gameState == states.INITIAL ) {
 		clear();
 		displayMessage("Press any key, or click...", 8, "rgb(0,0,0)", "bold 32px Arial");
-		drawCompanyLogo(SCREEN_WIDTH/2, 400)
+		drawCompanyLogo(SCREEN_WIDTH/2, 400);
 		return;
 	}
 	else if( gameState == states.STARTED ) {
