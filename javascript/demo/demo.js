@@ -233,14 +233,14 @@ BlockList.prototype.addBlocks = function(style) {
 		for( var column=0; column<this.columns; column++ ) {
 			/* Alternate between black filled blocks and white blocks with black outline in a pattern
 			 * (black-white-black-white-...) */
-			if( row % 2 == 0 ) {
-				if( column % 2  == 0 )
+			if( row % 2 === 0 ) {
+				if( column % 2 === 0 )
 					fstyle = "rgb(0,0,0)";
 				else
 					fstyle = "rgb(255,255,255)";
 			}
 			else {
-				if( column % 2  == 0 )
+				if( column % 2 === 0 )
 					fstyle = "rgb(255,255,255)";
 				else
 					fstyle = "rgb(0,0,0)";
@@ -260,8 +260,9 @@ BlockList.prototype.removeBlock = function(index) {
 BlockList.prototype.checkBallIntersect = function(ball) {
 	/* loop through each of the blocks to determine whether the ball has collided */
 	for( var i=0; i<this.blocks.length; i++ ) {
-		if( this.blocks[i] != null ) {
+		if( this.blocks[i] !== null ) {
 			var collisionType = this.blocks[i].checkBallIntersect(ball);
+			console.log(collisionType);
 			if( collisionType != null ) {
 				/* If collision has occurred, remove block from screen (by setting it to null)
 				 * 	(null has been used here instead of removing it from the array altogether,
@@ -278,7 +279,7 @@ BlockList.prototype.checkBallIntersect = function(ball) {
 /* Draw all of the blocks in the blocklist onto the canvas */
 BlockList.prototype.drawBlocks = function() {
 	for( var i=0; i<this.blocks.length; i++ ) {
-		if( this.blocks[i] != null )
+		if( this.blocks[i] !== null )
 			this.blocks[i].draw();
 	}
 };
@@ -286,7 +287,7 @@ BlockList.prototype.drawBlocks = function() {
 /* Function to see if the game has been one - see if any blocks are remaining */
 BlockList.prototype.checkGameWin = function() {
 	for( var i=0; i<this.blocks.length; i++ ) {
-		if( this.blocks[i] != null )
+		if( this.blocks[i] !== null )
 			return false;
 	}
 	console.log("Game has been won.");
