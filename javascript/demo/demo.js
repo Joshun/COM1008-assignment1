@@ -1,5 +1,5 @@
 /* HTML5 Canvas Demo
- * Jmoey Web Design (2014)
+ * Jmoey Web Design (12/2014)
  */
 
 
