@@ -1,3 +1,5 @@
+
+/* Put grey border around canvas, and set its background colour to white */
 canvas {
 	border: 1px solid grey;
 	background-color: white;

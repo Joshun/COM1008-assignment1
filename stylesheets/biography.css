@@ -1,18 +1,26 @@
-p.biography {
-	/*padding: 5px 100px; */
+
+.biography h1 {
+	padding-left: 250px;
+}
+
+/* Indent same amount has h1 page heading */
+.biography p {
 	margin-left: 250px;
 }
 
-p.disclaimer {
-	font-size: 0.75em;
-}
-
-img.profile {
+/* Give border and padding to profile picture */
+.profile img {
 	border: 1px solid grey;
 	padding: 10px;
 }
 
+/* Specify fixed width for profile picture figure */
 figure.profile {
 	float: left;
-	width: 150px; /* Same as paragraph left margin */
+	width: 150px;
+}
+
+/* Specify font for disclaimer text */
+aside p.disclaimer {
+	font-size: 0.75em;
 }

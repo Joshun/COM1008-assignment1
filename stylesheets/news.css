@@ -1,19 +1,26 @@
+
+/* News heading element - style with blue shadow effect */
 h2 {
 	text-shadow: 2px 2px #9999FF;
 	padding-bottom: 2px;
 	border-bottom: 1px solid grey;
 }
 
+/* Add spacing between each news story, and ensure they don't spill out too wide across the page */
 .news-content p {
 	padding-bottom: 2em;
 	margin-right: 0.5em;
 }
 
+/* Float news images to the right */
 .news-content img {
 	float: right;
 }
 
-.date {
+/* Style news article date's font size and make it italic */
+.news-content .date p {
+	padding: 0;
+	margin: 0;	
 	font-size: 0.75em;
 	font-style: italic;
 }

@@ -1,12 +1,15 @@
+/* hide bullet points when outlining access keys */
 .access-keys {
 	list-style: none;
 }
 
+/* make each key bold and in larger text */
 .access-key-element {
 	font-weight: bold;
 	font-size: 1.2em;
 }
 
+/* add padding to space out the access key list from the rest of the page and indent it slightly */
 ul.access-keys li {
 	padding: 5px 0 5px 0;
 }

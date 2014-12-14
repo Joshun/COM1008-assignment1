@@ -1,29 +1,33 @@
-textarea {
-	display: block;
-	width: 50%;
-	height: 50%;
-}
-
-
+/* Ensure there is no list style or spacing between lines of the company's address */
 ul.address-details {
 	list-style: none;
 	padding: 0;
 	margin: 0;
 }
 
-.form-container input, textarea {
-	display: block;
-	/*outline: none;*/
-	/*border-color: #7D8C99;
-	border-style: solid;*/
-	border: 1px solid #7D8C99;
+/* Set textarea width and height to 50% of parent element */
+.form-container textarea {
+	width: 50%;
+	height: 50%;
+}
+
+/* Add spacing between pairs of label and input/textarea */
+.form-container {
 	margin-bottom: 0.75em;
 }
 
+/* Style input and textarea fields to better match pages' theme */
+.form-container input, textarea {
+	display: block;
+	border: 1px solid #7D8C99;
+}
+
+/* Make border thicker on focus, for better aesthetics and to emphasise where they are entering text */
 .form-container input:focus, textarea:focus {
 	border: 2px solid #7D8C99;
 }
 
+/* Style submit button to match pages' theme */
 .form-container input.submit {
 	background-color: #FFA3B6;
 }

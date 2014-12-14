@@ -11,6 +11,7 @@
 	margin: auto;
 	
 	background-color: #D1E9FF; /* Fallback background colour if gradient is unsupported */
+	/* use linear-gradient to generate separate sidebar and page background colours */
 	background-image: -moz-linear-gradient(
 		left, 
 		#F3F2EA, 
@@ -44,7 +45,9 @@
 }
 
 body {
+	/* background colour of page edges and bottom */
 	background-color: #99F;
+	/* All fonts used on the website will use this until they are overridden. Use Raleway web font. */
 	font-family: Raleway, Times, sans-serif;
 	font-size: 1.2em;
 }
@@ -62,20 +65,20 @@ body {
 
 nav {
 	float: left;
-	width: 160px;
+	width: 160px; /* Set to fixed width, ensuring it looks the same on every page */
 }
 
 nav ul {
-	padding: 0;
+	padding: 0; /* Remove the unwanted default padding and list style for unordered list elements */
 	margin: 0;
 	list-style: none;
 }
 
 nav ul li a {
 	padding: 10px 10px;
-	background-color: #F3F2EA;
+	background-color: #F3F2EA; /* Specify background colour for each anchor (other than current page's) */
 	display: block;
-	transition: background-color ease 1s;
+	transition: background-color ease 1s; /* Add transition to fade in and out the anchor background colour change */
 	text-decoration: none;
 	color: #4E1A8C;
 	font-size: 1.2em;
@@ -86,17 +89,12 @@ nav ul li a:clicked {
 	color: #4E1A8C;
 }
 
-/*
-nav ul li+li {
-	border-top: 1px solid;
-}
-*/
-
 nav ul li#current-page a { /* Make current page's button different */
 	background-color: #FFA3B6;
 	font-weight: bold;
 }
 
+/* Change background colour of the anchor when hovering over it */
 nav ul li a:hover {
 	background-color: #FFA3B6;
 }
@@ -107,10 +105,6 @@ nav ul li a:hover {
 
 /* Heading definitions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
-h1.company-title {
-	font-size: 2.5em;
-}
-
 h1 {
 	font-size: 2em;
 	font-weight: bolder;
@@ -118,22 +112,7 @@ h1 {
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
-
-.clear-both {
-	clear: both;
-}
-
-/* Paragraph definitions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-
-
-
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-
-
-
-/* Image definitions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-
-
+/* Company's logo (appears top-left on every page) */
 
 .branding {
 	text-align: center;
@@ -150,15 +129,17 @@ header {
 	background-image: url("../images/header_gradient.png");
 	background-repeat: repeat-x;
 	padding-left: 200px;
+	/* font style of company name - large, different font */
 	font-family: "Oswald", "Comic Sans MS", sans-serif;
 	font-size: 4em;
-	min-height: 140px;
+	height: 140px; /* Fixed height to look the same on every page */
 }
 
 header .small {
 	font-size: 0.35em;
 }
 
+/* Give footer fixed padding size, set to a smaller font size and give it a themed background colour */
 footer {
 	clear: both;
 	padding: 10px 0 5px 10px; /* top: 10px, right: 0, bottom: 5px, left: 10px */
